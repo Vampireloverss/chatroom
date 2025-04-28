@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-box">
+    <h1>Welcome to Secret Chat</h1>
+    <form id="loginForm">
+      <input type="text" id="nickname" placeholder="Your Nickname" required>
+      <input type="password" id="code" placeholder="Secret Code" required>
+      <button type="submit">Enter Chat</button>
+      <p>Try codes: "vampire" or "seventhson"</p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nickname = document.getElementById('nickname').value;
+      const code = document.getElementById('code').value;
+
+      if (nickname && code) {
+        localStorage.setItem('nickname', nickname);
+        window.location.href = `/chat?code=${code}`;
+      }
+    });
+  </script>
+</body>
+</html>
